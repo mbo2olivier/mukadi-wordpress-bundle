@@ -19,6 +19,11 @@ Before install the bundle, edit your composer.json file and specify the followin
 ```yml
 "extra": {
     ...
+    "symfony": {
+        ...
+        "allow-contrib": "true"
+    }
+    ...
     "installer-paths": {
         "wp/mu-plugins/{$name}": ["type:wordpress-muplugin"],
         "wp/plugins/{$name}": ["type:wordpress-plugin"],
@@ -31,6 +36,17 @@ Before install the bundle, edit your composer.json file and specify the followin
 Run `php composer.phar require mukadi/wordpress-bundle` and let Symfony Flex configure the bundle.
 
 ** Note: If you make modifications on your public/index.php file, you must keep a backup copy before installing the bundle.
+
+## Add Wordpress routing into symfony
+
+Add the WordpressBundle routing file in your `config/routes.yaml`, after your custom routes to catch all Wordpress routes:
+
+```yml
+...
+mukadi_wordpress:
+    resource: "@MukadiWordpressBundle/Resources/config/routing.xml"
+```
+
 
 ## Install Wordpress Plugins via Composer
 
@@ -45,4 +61,4 @@ Edit your composer.json file to add a custom repository:
     }
 ]
 ```
-Now you can install wordpress plugins, just run `php composer.phar require wpackagist-plugin/{the-plugin-name}`.
+Now you can install wordpress plugins, just run `php composer.phar require wpackagist-plugin/<the-plugin-name>`.

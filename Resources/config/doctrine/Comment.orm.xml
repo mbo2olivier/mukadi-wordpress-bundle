@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+    <entity name="Mukadi\WordpressBundle\Entity\Comment" table="comments">
+        <!-- Mapped super classes won't support indexes -->
+        <indexes>
+            <index columns="comment_post_ID" name="comment_post_ID" />
+            <index columns="comment_approved,comment_date_gmt" name="comment_approved_date_gmt" />
+            <index columns="comment_date_gmt" name="comment_date_gmt" />
+            <index columns="comment_parent" name="comment_parent" />
+            <index columns="comment_author_email" name="comment_author_email" />
+        </indexes>
+
+        <id name="id" type="bigint" column="comment_ID">
+            <generator strategy="AUTO"/>
+            <options>
+                <option name="unsigned">true</option>
+            </options>
+        </id>
+
+        <many-to-one field="post" target-entity="Mukadi\WordpressBundle\Entity\Post" inversed-by="comments">
+            <join-column name="comment_post_ID" referenced-column-name="ID" nullable="false"/>
+        </many-to-one>
+    </entity>
+</doctrine-mapping>

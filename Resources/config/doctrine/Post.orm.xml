@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+    <entity name="Mukadi\WordpressBundle\Entity\Post"
+            table="posts"
+            repository-class="Mukadi\WordpressBundle\Repository\PostRepository"
+            change-tracking-policy="DEFERRED_IMPLICIT">
+
+        <!-- Mapped super classes won't support indexes -->
+        <indexes>
+            <index columns="post_name" name="post_name" />
+            <index columns="post_type,post_status,post_date,ID" name="type_status_date" />
+            <index columns="post_parent" name="post_parent" />
+            <index columns="post_author" name="post_author" />
+        </indexes>
+
+        <id name="id" type="bigint" column="ID">
+            <generator strategy="AUTO"/>
+            <options>
+                <option name="unsigned">true</option>
+            </options>
+        </id>
+
+        <one-to-many field="metas" target-entity="Mukadi\WordpressBundle\Entity\PostMeta" mapped-by="post" />
+        <one-to-many field="comments" target-entity="Mukadi\WordpressBundle\Entity\Comment" mapped-by="post" />
+        <one-to-many field="termRelationships" target-entity="Mukadi\WordpressBundle\Entity\TermRelationships" mapped-by="post" />
+
+        <many-to-one field="author" target-entity="Mukadi\WordpressBundle\Entity\User">
+            <join-column name="post_author" referenced-column-name="ID" />
+        </many-to-one>
+    </entity>
+</doctrine-mapping>

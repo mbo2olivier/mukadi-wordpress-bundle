@@ -1,0 +1,65 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="mukadi_wordpress.manager.comment_default" class="Mukadi\Doctrine\CRUD\CRUD" public="false">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <argument>%mukadi_wordpress.entity.comment.class%</argument>
+        </service>
+
+        <service id="mukadi_wordpress.manager.comment_meta_default" class="Mukadi\Doctrine\CRUD\CRUD" public="false">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <argument>%mukadi_wordpress.entity.comment_meta.class%</argument>
+        </service>
+
+        <service id="mukadi_wordpress.manager.link_default" class="Mukadi\Doctrine\CRUD\CRUD" public="false">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <argument>%mukadi_wordpress.entity.link.class%</argument>
+        </service>
+
+        <service id="mukadi_wordpress.manager.option_default" class="Mukadi\WordpressBundle\Manager\OptionManager" public="false">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <argument>%mukadi_wordpress.entity.option.class%</argument>
+        </service>
+
+        <service id="mukadi_wordpress.manager.post_default" class="Mukadi\WordpressBundle\Manager\PostManager" public="false">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <argument>%mukadi_wordpress.entity.post.class%</argument>
+            <argument type="service" id="mukadi_wordpress.manager.post_meta"/>
+        </service>
+
+        <service id="mukadi_wordpress.manager.post_meta_default" class="Mukadi\WordpressBundle\Manager\PostMetaManager" public="false">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <argument>%mukadi_wordpress.entity.post_meta.class%</argument>
+        </service>
+
+        <service id="mukadi_wordpress.manager.term_default" class="Mukadi\Doctrine\CRUD\CRUD" public="false">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <argument>%mukadi_wordpress.entity.term.class%</argument>
+        </service>
+
+        <service id="mukadi_wordpress.manager.term_relationships_default" class="Mukadi\Doctrine\CRUD\CRUD" public="false">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <argument>%mukadi_wordpress.entity.term_relationships.class%</argument>
+        </service>
+
+        <service id="mukadi_wordpress.manager.term_taxonomy_default" class="Mukadi\Doctrine\CRUD\CRUD" public="false">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <argument>%mukadi_wordpress.entity.term_taxonomy.class%</argument>
+        </service>
+
+        <service id="mukadi_wordpress.manager.user_default" class="Mukadi\Doctrine\CRUD\CRUD" public="false">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <argument>%mukadi_wordpress.entity.user.class%</argument>
+        </service>
+
+        <service id="mukadi_wordpress.manager.user_meta_default" class="Mukadi\Doctrine\CRUD\CRUD" public="false">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <argument>%mukadi_wordpress.entity.user_meta.class%</argument>
+        </service>
+
+    </services>
+</container>

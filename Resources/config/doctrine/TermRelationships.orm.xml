@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+    <entity name="Mukadi\WordpressBundle\Entity\TermRelationships"
+            table="term_relationships"
+            change-tracking-policy="DEFERRED_IMPLICIT">
+
+        <indexes>
+            <index columns="term_taxonomy_id" name="term_taxonomy_id" />
+        </indexes>
+
+        <id name="post" association-key="true" />
+        <id name="taxonomy" association-key="true" />
+
+        <many-to-one field="taxonomy" target-entity="Mukadi\WordpressBundle\Entity\TermTaxonomy" inversed-by="relationships">
+            <join-column name="term_taxonomy_id" referenced-column-name="term_taxonomy_id" />
+        </many-to-one>
+
+        <many-to-one field="post" target-entity="Mukadi\WordpressBundle\Entity\Post" inversed-by="termRelationships">
+            <join-column name="object_id" referenced-column-name="ID" />
+        </many-to-one>
+
+    </entity>
+</doctrine-mapping>

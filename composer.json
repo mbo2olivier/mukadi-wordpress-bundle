@@ -1,0 +1,29 @@
+{
+    "name": "mukadi/wordpress-bundle",
+    "description": "A Fork of Ekino Wordpress bundle, for use in symfony 4 into a dedicated skeleton sumfony project",
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Olivier M. Mukadi",
+            "email": "mbo2olivier@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^7.0",
+        "composer/installers": "^1.5",
+        "illuminate/support": "^5.6",
+        "symfony/framework-bundle": "^4.0",
+        "doctrine/doctrine-bundle": "^1.0",
+        "doctrine/orm": "^2.2",
+        "symfony/dotenv": "^4.0",
+        "hautelook/phpass": "0.3",
+        "mukadi/doctrine-crud": "^1.0",
+        "johnpbloch/wordpress": "^4.9.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Mukadi\\WordpressBundle\\": ""
+        }
+    }
+}

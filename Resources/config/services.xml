@@ -1,0 +1,27 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <defaults public="false" />
+        <!-- Services -->
+        <service id="Mukadi\WordpressBundle\Controller\WordpressController">
+            <tag name="controller.service_arguments" />
+        </service>
+        <service id="mukadi_wordpress.wordpress" class="Mukadi\WordpressBundle\Wordpress\Wordpress" >
+            <argument>%mukadi_wordpress.install_directory%</argument>
+            <argument>%mukadi_wordpress.globals%</argument>
+        </service>
+        <service id="Mukadi\WordpressBundle\Wordpress\Wordpress" alias="mukadi_wordpress.wordpress" />
+
+        <!-- Subscribers -->
+
+        <service id="mukadi_wordpress.subscriber.table_prefix_subscriber" class="Mukadi\WordpressBundle\Subscriber\TablePrefixSubscriber">
+            <tag name="doctrine.event_subscriber" />
+
+            <argument />
+        </service>
+    </services>
+</container>

@@ -23,5 +23,10 @@
 
             <argument />
         </service>
+
+        <service id="mukadi_wordpress.metadata_subscriber" class="Mukadi\WordpressBundle\Event\Subscriber\LoadMetadataSubscriber" public="false">
+            <argument>%mukadi_wordpress.repositories%</argument>
+            <tag name="doctrine.event_subscriber"/>
+        </service>
     </services>
 </container>

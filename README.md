@@ -62,3 +62,23 @@ Edit your composer.json file to add a custom repository:
 ]
 ```
 Now you can install wordpress plugins, just run `php composer.phar require wpackagist-plugin/<the-plugin-name>`.
+
+## Manipulate Wordpress database in Symfony
+
+You can call Wordpress table managers in Symfony by calling the following services:
+
+*Service identifier* | *Type*
+--- | ---
+mukadi_wordpress.manager.comment | Wordpress comment manager
+mukadi_wordpress.manager.comment_meta | Wordpress comment metas manager
+mukadi_wordpress.manager.link | Wordpress link manager
+mukadi_wordpress.manager.option | Wordpress option manager
+mukadi_wordpress.manager.post | Wordpress post manager
+mukadi_wordpress.manager.post_meta | Wordpress post metas manager
+mukadi_wordpress.manager.term | Wordpress term manager
+mukadi_wordpress.manager.term_relationships | Wordpress term relationships manager
+mukadi_wordpress.manager.term_taxonomy | Wordpress taxonomy manager
+mukadi_wordpress.manager.user | Wordpress user manager
+mukadi_wordpress.manager.user_meta | Wordpress user metas manager
+
+All of this services extends the `Mukadi\Doctrine\CRUD\CRUD` class, so see the [documentation](https://github.com/mbo2olivier/mukadi-doctrine-crud) to know how to deal with it.

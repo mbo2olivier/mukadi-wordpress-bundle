@@ -1,0 +1,18 @@
+os: linux
+env:
+    - SKELETON_VERSION="^3.4"
+    - PACKAGE_VERSION=dev-1.0.4-0
+php: 7.1
+dist: trusty
+sudo: false
+cache:
+    directories:
+        - $HOME/.composer/cache/files
+group: stable
+script:
+    - composer req mukadi/wordpress-bundle:${PACKAGE_VERSION}
+install:
+    - composer create-project symfony/skeleton:${SKELETON_VERSION} app
+    - cd app
+    - composer config extra.symfony.allow-contrib true
+language: php

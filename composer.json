@@ -16,7 +16,7 @@
         "symfony/framework-bundle": "^3.4||^4.0",
         "doctrine/doctrine-bundle": "^1.0",
         "doctrine/orm": "^2.2",
-        "symfony/dotenv": "^4.0",
+        "vlucas/phpdotenv": "^2.4",
         "hautelook/phpass": "0.3",
         "mukadi/doctrine-crud": "^1.0",
         "johnpbloch/wordpress": "^4.9.4"

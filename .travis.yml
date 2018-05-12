@@ -1,6 +1,7 @@
 os: linux
 env:
     - SKELETON_VERSION="^3.4"
+    - SKELETON_VERSION="^4.0"
 php: 7.1
 dist: trusty
 sudo: false
@@ -9,7 +10,7 @@ cache:
         - $HOME/.composer/cache/files
 group: stable
 script:
-    - composer require mukadi/wordpress-bundle dev-1.0.4-0
+    - composer require mukadi/wordpress-bundle 1.0.4-RC1
 install:
     - composer create-project symfony/skeleton:${SKELETON_VERSION} app
     - cd app

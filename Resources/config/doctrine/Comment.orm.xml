@@ -16,9 +16,5 @@
                 <option name="unsigned">true</option>
             </options>
         </id>
-
-        <many-to-one field="post" target-entity="Mukadi\WordpressBundle\Entity\Post" inversed-by="comments">
-            <join-column name="comment_post_ID" referenced-column-name="ID" nullable="false"/>
-        </many-to-one>
     </entity>
 </doctrine-mapping>

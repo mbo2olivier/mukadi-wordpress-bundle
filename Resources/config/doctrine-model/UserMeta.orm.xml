@@ -4,5 +4,11 @@
 
         <field name="key" nullable="true" type="string" length="255" column="meta_key" />
         <field name="value" nullable="true" type="text" column="meta_value" />
+        <field name="userId" type="bigint" length="20" column="user_id">
+            <options>
+                <option name="default">0</option>
+                <option name="unsigned">true</option>
+            </options>
+        </field>
     </mapped-superclass>
 </doctrine-mapping>

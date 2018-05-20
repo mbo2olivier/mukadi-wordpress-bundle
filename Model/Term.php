@@ -10,14 +10,13 @@
 
 namespace Mukadi\WordpressBundle\Model;
 
-use Doctrine\Common\Collections\ArrayCollection;
-
 /**
  * Class Term.
  *
  * This is the Term entity
  *
  * @author Vincent Composieux <composieux@ekino.com>
+ * @author Olivier M. Mukadi <mbo2olivier@gmail.com>
  */
 abstract class Term implements WordpressEntityInterface
 {
@@ -41,18 +40,6 @@ abstract class Term implements WordpressEntityInterface
      */
     protected $group;
 
-    /**
-     * @var ArrayCollection
-     */
-    protected $taxonomies;
-
-    /**
-     * Constructor.
-     */
-    public function __construct()
-    {
-        $this->taxonomies = new ArrayCollection();
-    }
 
     /**
      * @return int
@@ -122,51 +109,4 @@ abstract class Term implements WordpressEntityInterface
         return $this->name;
     }
 
-    /**
-     * @param array $taxonomies
-     *
-     * @return Term
-     */
-    public function setTaxonomies($taxonomies)
-    {
-        $this->taxonomies = $taxonomies;
-
-        return $this;
-    }
-
-    /**
-     * @return ArrayCollection
-     */
-    public function getTaxonomies()
-    {
-        return $this->taxonomies;
-    }
-
-    /**
-     * @param TermTaxonomy $taxonomy
-     *
-     * @return Term
-     */
-    public function addTaxonomy(TermTaxonomy $taxonomy)
-    {
-        if (!$this->taxonomies->contains($taxonomy)) {
-            $this->taxonomies[] = $taxonomy;
-        }
-
-        return $this;
-    }
-
-    /**
-     * @param TermTaxonomy $taxonomy
-     *
-     * @return Term
-     */
-    public function removeTaxonomy(TermTaxonomy $taxonomy)
-    {
-        if ($this->taxonomies->contains($taxonomy)) {
-            $this->taxonomies->remove($taxonomy);
-        }
-
-        return $this;
-    }
 }

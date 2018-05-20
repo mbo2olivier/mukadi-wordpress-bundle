@@ -3,5 +3,11 @@
     <mapped-superclass name="Mukadi\WordpressBundle\Model\PostMeta">
         <field name="key" type="string" length="255" column="meta_key" nullable="true" />
         <field name="value" type="text" column="meta_value" nullable="true" />
+        <field name="postId" type="bigint" length="20" column="post_id">
+            <options>
+                <option name="default">0</option>
+                <option name="unsigned">true</option>
+            </options>
+        </field>
     </mapped-superclass>
 </doctrine-mapping>

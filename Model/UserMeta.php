@@ -25,9 +25,9 @@ abstract class UserMeta implements WordpressEntityInterface
     protected $id;
 
     /**
-     * @var User
+     * @var int
      */
-    protected $user;
+    protected $userId;
 
     /**
      * @var string
@@ -68,23 +68,23 @@ abstract class UserMeta implements WordpressEntityInterface
     }
 
     /**
-     * @param User $user
+     * @param int $userId
      *
      * @return UserMeta
      */
-    public function setUser(User $user)
+    public function setUserId($userId)
     {
-        $this->user = $user;
+        $this->userId = $userId;
 
         return $this;
     }
 
     /**
-     * @return User
+     * @return int
      */
-    public function getUser()
+    public function getUserId()
     {
-        return $this->user;
+        return $this->userId;
     }
 
     /**

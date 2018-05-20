@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
     <mapped-superclass name="Mukadi\WordpressBundle\Model\Comment">
-        <field name="author" type="string" length="255" column="comment_author" />
+        <field name="author" type="text" column="comment_author" nullable="false"/>
         <field name="authorEmail" type="string" length="100" column="comment_author_email">
             <options>
                 <option name="default"/>
@@ -12,6 +12,12 @@
                 <option name="default"/>
             </options>
         </field>
+        <field name="postId" type="bigint" column="comment_post_ID">
+            <options>
+                <option name="default">0</option>
+                <option name="unsigned">true</option>
+            </options>
+        </field>
         <field name="authorIp" type="string" length="100" column="comment_author_IP">
             <options>
                 <option name="default"/>
@@ -19,12 +25,12 @@
         </field>
         <field name="date" type="datetime" column="comment_date">
             <options>
-                <option name="default">1970-01-01 00:00:00</option>
+                <option name="default">0000-00-00 00:00:00</option>
             </options>
         </field>
         <field name="dateGmt" type="datetime" column="comment_date_gmt">
             <options>
-                <option name="default">1970-01-01 00:00:00</option>
+                <option name="default">0000-00-00 00:00:00</option>
             </options>
         </field>
         <field name="content" type="text" column="comment_content"/>
@@ -50,11 +56,13 @@
         </field>
         <field name="user" type="bigint" column="user_id">
             <options>
+                <option name="unsigned">true</option>
                 <option name="default">0</option>
             </options>
         </field>
         <field name="parent" type="bigint" column="comment_parent">
             <options>
+                <option name="unsigned">true</option>
                 <option name="default">0</option>
             </options>
         </field>

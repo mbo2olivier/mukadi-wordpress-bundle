@@ -8,6 +8,7 @@
         <indexes>
             <index columns="user_login" name="user_login_key" />
             <index columns="user_nicename" name="user_nicename" />
+            <index columns="user_email" name="user_email" />
         </indexes>
 
         <id name="id" type="bigint" column="ID">
@@ -16,8 +17,6 @@
                 <option name="unsigned">true</option>
             </options>
         </id>
-
-        <one-to-many field="metas" target-entity="Mukadi\WordpressBundle\Entity\UserMeta" mapped-by="user" />
 
     </entity>
 </doctrine-mapping>

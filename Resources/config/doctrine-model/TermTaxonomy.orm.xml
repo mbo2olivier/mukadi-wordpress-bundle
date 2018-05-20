@@ -12,5 +12,17 @@
                 <option name="default">0</option>
             </options>
         </field>
+        <field name="termId" type="bigint" length="20" column="term_id">
+            <options>
+                <option name="default">0</option>
+                <option name="unsigned">true</option>
+            </options>
+        </field>
+        <field name="parentId" type="bigint" length="20" column="parent">
+            <options>
+                <option name="default">0</option>
+                <option name="unsigned">true</option>
+            </options>
+        </field>
     </mapped-superclass>
 </doctrine-mapping>

@@ -16,6 +16,7 @@ namespace Mukadi\WordpressBundle\Model;
  * This is the Comment entity
  *
  * @author Vincent Composieux <composieux@ekino.com>
+ * @author Olivier M. Mukadi <mbo2olivier@gmail.com>
  */
 abstract class Comment implements WordpressEntityInterface, WordpressContentInterface
 {
@@ -24,7 +25,7 @@ abstract class Comment implements WordpressEntityInterface, WordpressContentInte
 
     const APPROVED_PENDING = 0;
     const APPROVED_APPROVED = 1;
-    const APPROVED_POST_TRASHED = 'post-trashed';
+    const APPROVED_POST_TRASHED = 'postId-trashed';
     const APPROVED_SPAM = 'spam';
     const APPROVED_TRASH = 'trash';
 
@@ -34,9 +35,9 @@ abstract class Comment implements WordpressEntityInterface, WordpressContentInte
     protected $id;
 
     /**
-     * @var Post
+     * @var integer
      */
-    protected $post;
+    protected $postId;
 
     /**
      * @var string
@@ -332,23 +333,23 @@ abstract class Comment implements WordpressEntityInterface, WordpressContentInte
     }
 
     /**
-     * @param Post $post
+     * @param integer $postId
      *
      * @return Comment
      */
-    public function setPost(Post $post)
+    public function setPostId($postId)
     {
-        $this->post = $post;
+        $this->postId = $postId;
 
         return $this;
     }
 
     /**
-     * @return Post
+     * @return integer
      */
-    public function getPost()
+    public function getPostId()
     {
-        return $this->post;
+        return $this->postId;
     }
 
     /**

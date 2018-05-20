@@ -16,7 +16,5 @@
                 <option name="unsigned">true</option>
             </options>
         </id>
-
-        <one-to-many field="taxonomies" target-entity="Mukadi\WordpressBundle\Entity\TermTaxonomy" mapped-by="term" />
     </entity>
 </doctrine-mapping>

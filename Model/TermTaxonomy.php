@@ -10,8 +10,6 @@
 
 namespace Mukadi\WordpressBundle\Model;
 
-use Doctrine\Common\Collections\ArrayCollection;
-
 /**
  * Class TermTaxonomy.
  *
@@ -27,9 +25,9 @@ abstract class TermTaxonomy implements WordpressEntityInterface
     protected $id;
 
     /**
-     * @var Term
+     * @var int
      */
-    protected $term;
+    protected $termId;
 
     /**
      * @var string
@@ -42,27 +40,14 @@ abstract class TermTaxonomy implements WordpressEntityInterface
     protected $description;
 
     /**
-     * @var TermTaxonomy
+     * @var int
      */
-    protected $parent;
-
-    /**
-     * @var ArrayCollection
-     */
-    protected $relationships;
+    protected $parentId;
 
     /**
      * @var int
      */
     protected $count;
-
-    /**
-     * Constructor.
-     */
-    public function __construct()
-    {
-        $this->relationships = new ArrayCollection();
-    }
 
     /**
      * @return int
@@ -113,13 +98,13 @@ abstract class TermTaxonomy implements WordpressEntityInterface
     }
 
     /**
-     * @param int $parent
+     * @param int $parentId
      *
      * @return TermTaxonomy
      */
-    public function setParent($parent)
+    public function setParentId($parentId)
     {
-        $this->parent = $parent;
+        $this->parentId = $parentId;
 
         return $this;
     }
@@ -127,9 +112,9 @@ abstract class TermTaxonomy implements WordpressEntityInterface
     /**
      * @return int
      */
-    public function getParent()
+    public function getParentId()
     {
-        return $this->parent;
+        return $this->parentId;
     }
 
     /**
@@ -153,58 +138,22 @@ abstract class TermTaxonomy implements WordpressEntityInterface
     }
 
     /**
-     * @param Term $term
+     * @param int $termId
      *
      * @return TermTaxonomy
      */
-    public function setTerm(Term $term)
+    public function setTermId($termId)
     {
-        $this->term = $term;
+        $this->termId = $termId;
 
         return $this;
     }
 
     /**
-     * @return Term
+     * @return int
      */
-    public function getTerm()
+    public function getTermId()
     {
-        return $this->term;
-    }
-
-    /**
-     * @return ArrayCollection
-     */
-    public function getRelationships()
-    {
-        return $this->relationships;
-    }
-
-    /**
-     * @param TermRelationships $relationship
-     *
-     * @return Term
-     */
-    public function addRelationship(TermRelationships $relationship)
-    {
-        if (!$this->relationships->contains($relationship)) {
-            $this->relationships[] = $relationship;
-        }
-
-        return $this;
-    }
-
-    /**
-     * @param TermRelationships $relationship
-     *
-     * @return Term
-     */
-    public function removeRelationship(TermRelationships $relationship)
-    {
-        if ($this->relationships->contains($relationship)) {
-            $this->relationships->remove($relationship);
-        }
-
-        return $this;
+        return $this->termId;
     }
 }

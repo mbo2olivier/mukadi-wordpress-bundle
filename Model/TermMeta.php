@@ -1,23 +1,15 @@
 <?php
-/*
- * This file is part of the Ekino Wordpress package.
- *
- * (c) 2013 Ekino
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
 
 namespace Mukadi\WordpressBundle\Model;
 
 /**
- * Class PostMeta.
+ * Class TermMeta.
  *
- * This is the PostMeta entity
+ * This is the TermMeta entity
  *
- * @author Vincent Composieux <composieux@ekino.com>
+ * @author Olivier M. Mukadi <mbo2olivier@gmail.com>
  */
-abstract class PostMeta implements WordpressEntityInterface
+abstract class TermMeta implements WordpressEntityInterface
 {
     /**
      * @var int
@@ -27,7 +19,7 @@ abstract class PostMeta implements WordpressEntityInterface
     /**
      * @var int
      */
-    protected $postId;
+    protected $termId;
 
     /**
      * @var string
@@ -50,7 +42,7 @@ abstract class PostMeta implements WordpressEntityInterface
     /**
      * @param string $key
      *
-     * @return PostMeta
+     * @return TermMeta
      */
     public function setKey($key)
     {
@@ -68,13 +60,13 @@ abstract class PostMeta implements WordpressEntityInterface
     }
 
     /**
-     * @param int $postId
+     * @param int $termId
      *
-     * @return PostMeta
+     * @return TermMeta
      */
-    public function setPostId($postId)
+    public function setTermId($termId)
     {
-        $this->postId = $postId;
+        $this->termId = $termId;
 
         return $this;
     }
@@ -82,15 +74,15 @@ abstract class PostMeta implements WordpressEntityInterface
     /**
      * @return int
      */
-    public function getPostId()
+    public function getTermId()
     {
-        return $this->postId;
+        return $this->termId;
     }
 
     /**
      * @param string $value
      *
-     * @return PostMeta
+     * @return TermMeta
      */
     public function setValue($value)
     {

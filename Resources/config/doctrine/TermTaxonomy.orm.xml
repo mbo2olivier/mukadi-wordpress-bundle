@@ -18,15 +18,5 @@
                 <option name="unsigned">true</option>
             </options>
         </id>
-
-        <one-to-many target-entity="Mukadi\WordpressBundle\Entity\TermRelationships" mapped-by="taxonomy" field="relationships" />
-
-        <many-to-one field="term" target-entity="Mukadi\WordpressBundle\Entity\Term" inversed-by="taxonomies">
-            <join-column name="term_id" referenced-column-name="term_id" nullable="false" />
-        </many-to-one>
-
-        <many-to-one field="parent" target-entity="Mukadi\WordpressBundle\Entity\Term">
-            <join-column name="parent" referenced-column-name="term_id" nullable="false" />
-        </many-to-one>
     </entity>
 </doctrine-mapping>

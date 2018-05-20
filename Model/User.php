@@ -10,7 +10,6 @@
 
 namespace Mukadi\WordpressBundle\Model;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
@@ -72,23 +71,11 @@ abstract class User implements UserInterface, WordpressEntityInterface
      */
     protected $displayName;
 
-    /**
-     * @var ArrayCollection
-     */
-    protected $metas;
 
     /**
      * @var array
      */
     protected $roles;
-
-    /**
-     * Constructor.
-     */
-    public function __construct()
-    {
-        $this->metas = new ArrayCollection();
-    }
 
     /**
      * @return int
@@ -278,43 +265,6 @@ abstract class User implements UserInterface, WordpressEntityInterface
         return $this->url;
     }
 
-    /**
-     * @param ArrayCollection $metas
-     *
-     * @return User
-     */
-    public function setMetas(ArrayCollection $metas)
-    {
-        $this->metas = $metas;
-
-        return $this;
-    }
-
-    /**
-     * Returns user meta value from a meta key name.
-     *
-     * @param string $name
-     *
-     * @return string|null
-     */
-    public function getMetaValue($name)
-    {
-        foreach ($this->getMetas() as $meta) {
-            if ($name == $meta->getKey()) {
-                return $meta->getValue();
-            }
-        }
-
-        return;
-    }
-
-    /**
-     * @return ArrayCollection
-     */
-    public function getMetas()
-    {
-        return $this->metas;
-    }
 
     /**
      * Sets user roles.

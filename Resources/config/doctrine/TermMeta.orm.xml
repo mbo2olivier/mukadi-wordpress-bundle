@@ -1,23 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-    <entity name="Mukadi\WordpressBundle\Entity\TermRelationships"
-            table="term_relationships"
+    <entity name="Mukadi\WordpressBundle\Entity\TermMeta"
+            table="termmeta"
+            repository-class="Mukadi\WordpressBundle\Repository\TermMetaRepository"
             change-tracking-policy="DEFERRED_IMPLICIT">
 
+        <!-- Mapped super classes won't support indexes -->
         <indexes>
-            <index columns="term_taxonomy_id" name="term_taxonomy_id" />
+            <index columns="meta_key" name="meta_key" />
+            <index columns="term_id" name="term_id" />
         </indexes>
 
-        <id name="postId" type="bigint" column="object_id">
+        <id name="id" type="bigint" column="meta_id">
+            <generator strategy="AUTO"/>
             <options>
                 <option name="unsigned">true</option>
-                <option name="default">0</option>
-            </options>
-        </id>
-        <id name="taxonomyId" type="bigint" column="term_taxonomy_id">
-            <options>
-                <option name="unsigned">true</option>
-                <option name="default">0</option>
             </options>
         </id>
 

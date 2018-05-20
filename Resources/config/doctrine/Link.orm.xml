@@ -15,9 +15,5 @@
                 <option name="unsigned">true</option>
             </options>
         </id>
-
-        <many-to-one target-entity="User" field="owner">
-            <join-column name="link_owner" referenced-column-name="ID" nullable="false"/>
-        </many-to-one>
     </entity>
 </doctrine-mapping>

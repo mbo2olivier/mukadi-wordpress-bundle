@@ -19,13 +19,5 @@
                 <option name="unsigned">true</option>
             </options>
         </id>
-
-        <one-to-many field="metas" target-entity="Mukadi\WordpressBundle\Entity\PostMeta" mapped-by="post" />
-        <one-to-many field="comments" target-entity="Mukadi\WordpressBundle\Entity\Comment" mapped-by="post" />
-        <one-to-many field="termRelationships" target-entity="Mukadi\WordpressBundle\Entity\TermRelationships" mapped-by="post" />
-
-        <many-to-one field="author" target-entity="Mukadi\WordpressBundle\Entity\User">
-            <join-column name="post_author" referenced-column-name="ID" />
-        </many-to-one>
     </entity>
 </doctrine-mapping>

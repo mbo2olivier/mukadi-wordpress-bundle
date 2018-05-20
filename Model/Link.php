@@ -16,6 +16,7 @@ namespace Mukadi\WordpressBundle\Model;
  * This is the Link entity
  *
  * @author Vincent Composieux <composieux@ekino.com>
+ * @author Olivier M. Mukadi <mbo2olivier@gmail.com>
  */
 abstract class Link implements WordpressEntityInterface
 {

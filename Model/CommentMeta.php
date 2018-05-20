@@ -16,6 +16,7 @@ namespace Mukadi\WordpressBundle\Model;
  * This is the CommentMeta entity
  *
  * @author Vincent Composieux <composieux@ekino.com>
+ * @author Olivier M. Mukadi <mbo2olivier@gmail.com>
  */
 abstract class CommentMeta implements WordpressEntityInterface
 {
@@ -25,9 +26,9 @@ abstract class CommentMeta implements WordpressEntityInterface
     protected $id;
 
     /**
-     * @var Comment
+     * @var integer
      */
-    protected $comment;
+    protected $commentId;
 
     /**
      * @var string
@@ -48,23 +49,23 @@ abstract class CommentMeta implements WordpressEntityInterface
     }
 
     /**
-     * @param Comment $comment
+     * @param integer $commentId
      *
      * @return CommentMeta
      */
-    public function setComment(Comment $comment)
+    public function setCommentId($commentId)
     {
-        $this->comment = $comment;
+        $this->commentId = $commentId;
 
         return $this;
     }
 
     /**
-     * @return Comment
+     * @return integer
      */
-    public function getComment()
+    public function getCommentId()
     {
-        return $this->comment;
+        return $this->commentId;
     }
 
     /**

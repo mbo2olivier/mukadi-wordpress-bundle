@@ -16,13 +16,14 @@ namespace Mukadi\WordpressBundle\Model;
  * This is the TermRelationships entity
  *
  * @author Vincent Composieux <composieux@ekino.com>
+ * @author Olivier M. Mukadi <mbo2olivier@gmail.com>
  */
 abstract class TermRelationships implements WordpressEntityInterface
 {
     /**
-     * @var TermTaxonomy
+     * @var int
      */
-    protected $taxonomy;
+    protected $taxonomyId;
 
     /**
      * @var int
@@ -30,28 +31,28 @@ abstract class TermRelationships implements WordpressEntityInterface
     protected $termOrder;
 
     /**
-     * @var Post
+     * @var int
      */
-    protected $post;
+    protected $postId;
 
     /**
-     * @param Post $post
+     * @param int $postId
      *
      * @return TermRelationships
      */
-    public function setPost(Post $post)
+    public function setPostId($postId)
     {
-        $this->post = $post;
+        $this->postId = $postId;
 
         return $this;
     }
 
     /**
-     * @return Post
+     * @return int
      */
-    public function getPost()
+    public function getPostId()
     {
-        return $this->post;
+        return $this->postId;
     }
 
     /**
@@ -75,22 +76,22 @@ abstract class TermRelationships implements WordpressEntityInterface
     }
 
     /**
-     * @param TermTaxonomy $taxonomy
+     * @param int $taxonomyId
      *
      * @return TermRelationships
      */
-    public function setTaxonomy(TermTaxonomy $taxonomy)
+    public function setTaxonomyId($taxonomy)
     {
-        $this->taxonomy = $taxonomy;
+        $this->taxonomyId = $taxonomyId;
 
         return $this;
     }
 
     /**
-     * @return TermTaxonomy
+     * @return int
      */
-    public function getTaxonomy()
+    public function getTaxonomyId()
     {
-        return $this->taxonomy;
+        return $this->taxonomyId;
     }
 }

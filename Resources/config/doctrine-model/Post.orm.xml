@@ -3,12 +3,12 @@
     <mapped-superclass name="Mukadi\WordpressBundle\Model\Post">
         <field name="date" type="datetime" column="post_date">
             <options>
-                <option name="default">1970-01-01 00:00:00</option>
+                <option name="default">0000-00-00 00:00:00</option>
             </options>
         </field>
         <field name="dateGmt" type="datetime" column="post_date_gmt">
             <options>
-                <option name="default">1970-01-01 00:00:00</option>
+                <option name="default">0000-00-00 00:00:00</option>
             </options>
         </field>
         <field name="content" type="text" column="post_content" />
@@ -29,7 +29,7 @@
                 <option name="default">open</option>
             </options>
         </field>
-        <field name="password" type="string" length="20" column="post_password">
+        <field name="password" type="string" length="255" column="post_password">
             <options>
                 <option name="default"/>
             </options>
@@ -43,12 +43,12 @@
         <field name="pinged" type="text" column="pinged" />
         <field name="modified" type="datetime" column="post_modified">
             <options>
-                <option name="default">1970-01-01 00:00:00</option>
+                <option name="default">0000-00-00 00:00:00</option>
             </options>
         </field>
         <field name="modifiedGmt" type="datetime" column="post_modified_gmt">
             <options>
-                <option name="default">1970-01-01 00:00:00</option>
+                <option name="default">0000-00-00 00:00:00</option>
             </options>
         </field>
         <field name="contentFiltered" type="text" column="post_content_filtered" />
@@ -80,6 +80,13 @@
         <field name="parent" type="bigint" length="20" column="post_parent">
             <options>
                 <option name="default">0</option>
+                <option name="unsigned">true</option>
+            </options>
+        </field>
+        <field name="authorId" type="bigint" length="20" column="post_author">
+            <options>
+                <option name="default">0</option>
+                <option name="unsigned">true</option>
             </options>
         </field>
     </mapped-superclass>

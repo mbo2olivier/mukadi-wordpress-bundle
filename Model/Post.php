@@ -10,15 +10,13 @@
 
 namespace Mukadi\WordpressBundle\Model;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Criteria;
-
 /**
  * Class Post.
  *
  * This is the Post entity
  *
  * @author Vincent Composieux <composieux@ekino.com>
+ * @author Olivier M. Mukadi <mbo2olivier@gmail.com>
  */
 abstract class Post implements WordpressEntityInterface, WordpressContentInterface
 {
@@ -48,9 +46,9 @@ abstract class Post implements WordpressEntityInterface, WordpressContentInterfa
     protected $id;
 
     /**
-     * @var User
+     * @var int
      */
-    protected $author;
+    protected $authorId;
 
     /**
      * @var \DateTime
@@ -158,31 +156,6 @@ abstract class Post implements WordpressEntityInterface, WordpressContentInterfa
     protected $commentCount;
 
     /**
-     * @var ArrayCollection
-     */
-    protected $metas;
-
-    /**
-     * @var ArrayCollection
-     */
-    protected $comments;
-
-    /**
-     * @var ArrayCollection
-     */
-    protected $termRelationships;
-
-    /**
-     * Constructor.
-     */
-    public function __construct()
-    {
-        $this->metas = new ArrayCollection();
-        $this->comments = new ArrayCollection();
-        $this->termRelationships = new ArrayCollection();
-    }
-
-    /**
      * @return int
      */
     public function getId()
@@ -191,23 +164,23 @@ abstract class Post implements WordpressEntityInterface, WordpressContentInterfa
     }
 
     /**
-     * @param User $author
+     * @param int $authorId
      *
      * @return Post
      */
-    public function setAuthor(User $author)
+    public function setAuthorId($authorId)
     {
-        $this->author = $author;
+        $this->authorId = $authorId;
 
         return $this;
     }
 
     /**
-     * @return User
+     * @return int
      */
-    public function getAuthor()
+    public function getAuthorId()
     {
-        return $this->author;
+        return $this->authorId;
     }
 
     /**
@@ -628,215 +601,6 @@ abstract class Post implements WordpressEntityInterface, WordpressContentInterfa
     public function getType()
     {
         return $this->type;
-    }
-
-    /**
-     * @param ArrayCollection $metas
-     *
-     * @return Post
-     */
-    public function setMetas(ArrayCollection $metas)
-    {
-        $this->metas = $metas;
-
-        return $this;
-    }
-
-    /**
-     * @return ArrayCollection
-     */
-    public function getMetas()
-    {
-        return $this->metas;
-    }
-
-    /**
-     * @param PostMeta $meta
-     *
-     * @return Post
-     */
-    public function addMeta(PostMeta $meta)
-    {
-        $this->metas[] = $meta;
-
-        return $this;
-    }
-
-    /**
-     * @param PostMeta $meta
-     *
-     * @return Post
-     */
-    public function removeMeta(PostMeta $meta)
-    {
-        if ($this->metas->contains($meta)) {
-            $this->metas->remove($meta);
-        }
-
-        return $this;
-    }
-
-    /**
-     * @param string $name
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getMetaByKey($name)
-    {
-        $criteria = Criteria::create();
-        $criteria->where(Criteria::expr()->eq('key', $name));
-
-        return $this->metas->matching($criteria);
-    }
-
-    /**
-     * Returns user meta value from a meta key name.
-     *
-     * @param string $name
-     *
-     * @return string|null
-     */
-    public function getMetaValue($name)
-    {
-        /** @var PostMeta $meta */
-        foreach ($this->getMetas() as $meta) {
-            if ($name == $meta->getKey()) {
-                return $meta->getValue();
-            }
-        }
-
-        return;
-    }
-
-    /**
-     * @return ArrayCollection
-     */
-    public function getComments()
-    {
-        return $this->comments;
-    }
-
-    /**
-     * @param Comment $comment
-     *
-     * @return Post
-     */
-    public function addComment(Comment $comment)
-    {
-        if (!$this->comments->contains($comment)) {
-            $this->comments[] = $comment;
-        }
-
-        return $this;
-    }
-
-    /**
-     * @param Comment $comment
-     *
-     * @return Post
-     */
-    public function removeComment(Comment $comment)
-    {
-        $this->comments->remove($comment);
-
-        return $this;
-    }
-
-    /**
-     * @return ArrayCollection
-     */
-    public function getTermRelationships()
-    {
-        return $this->termRelationships;
-    }
-
-    /**
-     * @param TermRelationships $relationship
-     *
-     * @return Post
-     */
-    public function addTermRelationship(TermRelationships $relationship)
-    {
-        $this->termRelationships[] = $relationship;
-
-        return $this;
-    }
-
-    /**
-     * @param TermRelationships $relationship
-     *
-     * @return Post
-     */
-    public function removeTermRelationship(TermRelationships $relationship)
-    {
-        $this->termRelationships->remove($relationship);
-
-        return $this;
-    }
-
-    /**
-     * @param string $type
-     *
-     * @return ArrayCollection|null
-     */
-    public function getTaxonomiesByType($type)
-    {
-        $taxonomies = new ArrayCollection();
-
-        /** @var TermRelationships $relationship */
-        foreach ($this->getTermRelationships() as $relationship) {
-            if ($type === $relationship->getTaxonomy()->getTaxonomy()) {
-                $taxonomies[] = $relationship->getTaxonomy();
-            }
-        }
-
-        return ($taxonomies->count() == 0) ? null : $taxonomies;
-    }
-
-    /**
-     * @param $type
-     *
-     * @return ArrayCollection|null
-     */
-    public function getTermsByType($type)
-    {
-        $terms = new ArrayCollection();
-        $taxonomies = $this->getTaxonomiesByType($type);
-
-        /* @var TermTaxonomy $taxonomy */
-        if ($taxonomies !== null) {
-            foreach ($taxonomies as $taxonomy) {
-                $terms[] = $taxonomy->getTerm();
-            }
-        }
-
-        return ($terms->count() == 0) ? null : $terms;
-    }
-
-    /**
-     * @return ArrayCollection
-     */
-    public function getTags()
-    {
-        return $this->getTermsByType('post_tag');
-    }
-
-    /**
-     * @return ArrayCollection
-     */
-    public function getCategories()
-    {
-        return $this->getTaxonomiesByType('category');
-    }
-
-    /**
-     * @return Term
-     */
-    public function getCategory()
-    {
-        $taxonomy = $this->getCategories() ? $this->getCategories()->first() : null;
-
-        return $taxonomy ? $taxonomy->getTerm() : null;
     }
 
     /**

@@ -10,16 +10,12 @@
             <index columns="user_id" name="user_id" />
         </indexes>
 
-        <id name="id" type="integer" column="umeta_id">
+        <id name="id" type="bigint" column="umeta_id">
             <generator strategy="AUTO"/>
             <options>
                 <option name="unsigned">true</option>
             </options>
         </id>
-
-        <many-to-one field="user" target-entity="Mukadi\WordpressBundle\Entity\User" inversed-by="metas">
-            <join-column name="user_id" referenced-column-name="ID" />
-        </many-to-one>
 
     </entity>
 </doctrine-mapping>

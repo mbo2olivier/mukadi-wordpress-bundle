@@ -1,6 +1,6 @@
 {
     "name": "mukadi/wordpress-bundle",
-    "description": "A Fork of Ekino Wordpress bundle, for use in symfony 4 into a dedicated skeleton sumfony project",
+    "description": "A Fork of Ekino Wordpress bundle, for use in symfony 4 into a dedicated skeleton symfony project",
     "type": "symfony-bundle",
     "license": "MIT",
     "authors": [

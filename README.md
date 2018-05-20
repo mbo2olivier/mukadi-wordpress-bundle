@@ -47,7 +47,6 @@ mukadi_wordpress:
     resource: "@MukadiWordpressBundle/Resources/config/routing.xml"
 ```
 
-
 ## Install Wordpress Plugins via Composer
 
 Edit your composer.json file to add a custom repository:
@@ -62,6 +61,16 @@ Edit your composer.json file to add a custom repository:
 ]
 ```
 Now you can install wordpress plugins, just run `php composer.phar require wpackagist-plugin/<the-plugin-name>`.
+
+## Avoid Doctrine remove custom Wordpress tables
+
+When you install plugins in Wordpress, plugin can create custom tables to store specific data. By default such tables will be removed by the `doctrine:migrations:diff` command. You must configure doctrine/dbal to ignore those tables, just have to add the following configuration option to your doctrine configuration:
+```yml
+...
+doctrine:
+    dbal:
+        schema_filter: '~^(?!%env(WP_PREFIX)%)~'
+```
 
 ## Manipulate Wordpress database in Symfony
 

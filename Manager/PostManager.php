@@ -111,7 +111,7 @@ class PostManager extends BaseManager
         }
 
         /** @var $post Post */
-        if (!$post = $this->find($thumbnailPostMeta->getValue())) {
+        if (!$post = $this->get($thumbnailPostMeta->getValue())) {
             return '';
         }
 
@@ -130,17 +130,5 @@ class PostManager extends BaseManager
         $date = $date ?: new \DateTime();
 
         return $this->repository->findByDate($date);
-    }
-
-    /**
-     * Returns posts for a specified category.
-     *
-     * @param string $category
-     *
-     * @return array
-     */
-    public function findByCategory($category)
-    {
-        return $this->repository->findByCategory($category);
     }
 }

@@ -25,5 +25,8 @@
         "psr-4": {
             "Mukadi\\WordpressBundle\\": ""
         }
+    },
+    "suggest": {
+        "doctrine/doctrine-migrations-bundle": "For a best management of your database schema"
     }
 }

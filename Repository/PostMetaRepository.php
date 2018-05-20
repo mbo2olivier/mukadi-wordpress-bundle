@@ -30,9 +30,8 @@ class PostMetaRepository extends EntityRepository
     public function getPostMetaQuery($postId, $metaName)
     {
         return $this->createQueryBuilder('m')
-            ->innerJoin('m.post', 'p')
             ->where('m.key = :metaName')
-            ->andWhere('p.id = :postId')
+            ->andWhere('m.postId = :postId')
             ->setParameter('postId', $postId)
             ->setParameter('metaName', $metaName)
             ->getQuery();

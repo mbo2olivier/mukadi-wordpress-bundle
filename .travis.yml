@@ -9,6 +9,8 @@ cache:
     directories:
         - $HOME/.composer/cache/files
 group: stable
+before_install:
+    - composer self-update
 script:
     - composer require mukadi/wordpress-bundle 1.0.4
 install:

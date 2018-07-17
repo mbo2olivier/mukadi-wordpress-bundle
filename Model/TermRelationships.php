@@ -80,7 +80,7 @@ abstract class TermRelationships implements WordpressEntityInterface
      *
      * @return TermRelationships
      */
-    public function setTaxonomyId($taxonomy)
+    public function setTaxonomyId($taxonomyId)
     {
         $this->taxonomyId = $taxonomyId;
 

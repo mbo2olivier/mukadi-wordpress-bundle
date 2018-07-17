@@ -21,21 +21,34 @@ Before install the bundle, edit your composer.json file and specify the followin
     ...
     "symfony": {
         ...
-        "allow-contrib": "true"
+        "allow-contrib": "true" # allow symfony flex to install recipe (if your are using symfony flex)
     }
     ...
+    # set installation path for wordpress themes and plugins
     "installer-paths": {
-        "wp/mu-plugins/{$name}": ["type:wordpress-muplugin"],
-        "wp/plugins/{$name}": ["type:wordpress-plugin"],
-        "wp/themes/{$name}": ["type:wordpress-theme"]
+        "public/mu-plugins/{$name}": ["type:wordpress-muplugin"],
+        "public/plugins/{$name}": ["type:wordpress-plugin"],
+        "public/themes/{$name}": ["type:wordpress-theme"]
     },
-    "wordpress-install-dir": "public"
+    # install wordpress in a public sub-directory
+    "wordpress-install-dir": "public/wp"
 },
 ```
 
 Run `php composer.phar require mukadi/wordpress-bundle` and let Symfony Flex configure the bundle.
 
-** Note: If you make modifications on your public/index.php file, you must keep a backup copy before installing the bundle.
+## Bundle configuration
+
+If your are not using symfony flex, you have to configure manually your bundle, here is the minimal bundle configuration:
+
+```yml
+mukadi_wordpress:
+    table_prefix: "%env(WP_PREFIX)%"
+    wordpress_directory: '%kernel.project_dir%/public/%env(WP_DIR)%'
+```
+## Update your the public/index.php file
+
+If you don't make modifications in your public/index.php file you can just copy the content of the generated 'sf-wp-bootstrap.php' into your index.php file, otherwise update your index.php accordingly to that file.
 
 ## Add Wordpress routing into symfony
 

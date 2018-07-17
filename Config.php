@@ -29,7 +29,7 @@ class Config {
     /**
      * Create a new application instance.
      *
-     * @param string $publicPath
+     * @param string $wpPath
      *
      * @return void
      */
@@ -92,11 +92,11 @@ class Config {
         define('WP_HOME', env('WP_URL', $request->getSchemeAndHttpHost()));
 
         // Set the WordPress directory path.
-        define('WP_SITEURL', env('WP_SITEURL', WP_HOME));
+        define('WP_SITEURL', env('WP_SITEURL', sprintf('%s/%s',WP_HOME,'wp')));
 
         // Set the WordPress content directory path.
-        define('WP_CONTENT_DIR', env('WP_CONTENT_DIR', sprintf('%s/%s',$this->getBasePath(),"wp")));
-        define('WP_CONTENT_URL', env('WP_CONTENT_URL', sprintf('%s/%s',WP_HOME,'wp')));
+        define('WP_CONTENT_DIR', env('WP_CONTENT_DIR', sprintf('%s/%s',$this->getBasePath(),"public")));
+        define('WP_CONTENT_URL', env('WP_CONTENT_URL', WP_HOME));
 
         // Set the trash to less days to optimize WordPress.
         define('EMPTY_TRASH_DAYS', env('EMPTY_TRASH_DAYS', 7));
@@ -131,20 +131,18 @@ class Config {
     public function getBasePath(): string
     {
         if (is_null($this->basePath)) {
-            return realpath($this->wpPath.'/../');
+            return realpath($this->wpPath.'/../../');
         }
 
         return $this->basePath;
     }
 
     /**
-     * Get the base path for the application.
-     *
-     * @param string $basePath
+     * Set the base path for the application.
      *
      * @return void
      */
-    public function setBasePath(string $basePath)
+    private function setBasePath()
     {
         $this->basePath = $basePath;
     }
@@ -156,7 +154,7 @@ class Config {
      */
     public function getWpPath(): string
     {
-        return $this->publicPath;
+        return $this->wpPath;
     }
 
     /**

@@ -46,7 +46,7 @@ mukadi_wordpress:
     table_prefix: "%env(WP_PREFIX)%"
     wordpress_directory: '%kernel.project_dir%/public/%env(WP_DIR)%'
 ```
-## Update your the public/index.php file
+## Update the public/index.php file
 
 If you don't make modifications in your public/index.php file you can just copy the content of the generated 'sf-wp-bootstrap.php' into your index.php file, otherwise update your index.php accordingly to that file.
 

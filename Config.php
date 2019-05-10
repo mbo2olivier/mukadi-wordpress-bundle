@@ -1,7 +1,7 @@
 <?php
 namespace Mukadi\WordpressBundle;
 
-use Dotenv\Dotenv;
+use Symfony\Component\Dotenv\Dotenv;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -29,20 +29,14 @@ class Config {
     /**
      * Create a new application instance.
      *
-     * @param string $wpPath
+     * @param string $path
      *
      * @return void
      */
-    public function __construct(string $wpPath)
+    public function __construct(string $path)
     {
-        $this->wpPath = $wpPath;
-
-        try {
-           (new Dotenv($this->getBasePath()))->load();
-           // (new Dotenv())->load($this->getBasePath().'/.env');
-        } catch (InvalidPathException $e) {
-            //
-        }
+        (new Dotenv())->load($path.'/../.env');
+        $this->wpPath = $path."/".env('WP_DIR', 'wp');
     }
 
     /**

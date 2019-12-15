@@ -31,8 +31,8 @@ class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder()
     {
-        $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('mukadi_wordpress');
+        $treeBuilder = new TreeBuilder('mukadi_wordpress');
+        $rootNode = $treeBuilder->getRootNode();
 
         $rootNode
             ->children()

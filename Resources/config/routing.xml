@@ -4,7 +4,7 @@
         xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
 
     <route id="mukadi_wordpress_wp" path="/{url}">
-        <default key="_controller">MukadiWordpressBundle:Wordpress:wp</default>
+        <default key="_controller">Mukadi\WordpressBundle\Controller\WordpressController::wpAction</default>
         <requirement key="url">.*</requirement>
     </route>
 </routes>

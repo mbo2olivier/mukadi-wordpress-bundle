@@ -9,11 +9,10 @@ sudo: false
 cache:
     directories:
         - $HOME/.composer/cache/files
-group: stable
 before_install:
     - composer self-update
 script:
-    - composer require mukadi/wordpress-bundle
+    - composer require mukadi/wordpress-bundle 2.0.0-RC1
 install:
     - composer create-project symfony/skeleton:${SKELETON_VERSION} app
     - cd app

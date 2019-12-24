@@ -37,4 +37,5 @@ function run(){
     $kernelResponse->send();
     $kernel->terminate($kernelRequest, $kernelResponse);
 }
+
 run();

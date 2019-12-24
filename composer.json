@@ -26,7 +26,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Mukadi\\WordpressBundle\\": ""
+            "Mukadi\\WordpressBundle\\": "src/"
         }
     },
     "suggest": {

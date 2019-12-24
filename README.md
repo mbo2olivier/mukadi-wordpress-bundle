@@ -1,7 +1,7 @@
 MukadiWordpressBundle
 ====================
 
-This is a fork of [EkinoWordpressbundle](https://github.com/ekino/EkinoWordpressBundle), this bundle adapt EkinoWordpressBundle to symfony 4 new architecture and features. Some features has been removed (such as automatic symfony authentication when authenticated in Wordpress...) and will be reintegrated as separated bundle to install if needed.
+This is a fork of [EkinoWordpressbundle](https://github.com/ekino/EkinoWordpressBundle), this bundle adapt EkinoWordpressBundle to symfony >= 4 new architecture and features. Some features has been removed (such as automatic symfony authentication when authenticated in Wordpress...) and will be reintegrated as separated bundle to install if needed.
 
 Here are some retained features:
 
@@ -78,7 +78,7 @@ Here's what your index.php file should look like:
 
 ```php
 use App\Kernel;
-use Symfony\Component\Debug\Debug;
+use Symfony\Component\ErrorHandler\Debug;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Dotenv\Dotenv;
 
@@ -104,7 +104,7 @@ function run(){
     }
 
     $kernel = new Kernel($_SERVER['APP_ENV'], (bool) $_SERVER['APP_DEBUG']);
-    # injcet SF container in WP
+    # inject SF container in WP
     $GLOBALS['sf'] = function ($id) use (&$kernel) {
         return $kernel->getContainer()->get($id);
     };

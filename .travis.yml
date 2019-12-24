@@ -12,9 +12,9 @@ cache:
 before_install:
     - composer self-update
 script:
-    - composer require mukadi/wordpress-bundle 2.0.1-RC3
+    - composer require mukadi/wordpress-bundle 2.0.1-RC5
 install:
     - composer create-project symfony/skeleton:${SKELETON_VERSION} app
     - cd app
-    - composer config extra.symfony.allow-contrib true
+    - composer config extra.symfony.allow-contrib false
 language: php

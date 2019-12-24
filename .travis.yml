@@ -12,7 +12,7 @@ cache:
 before_install:
     - composer self-update
 script:
-    - composer require mukadi/wordpress-bundle 2.0.0-RC1
+    - composer require mukadi/wordpress-bundle 2.0.1-RC3
 install:
     - composer create-project symfony/skeleton:${SKELETON_VERSION} app
     - cd app
